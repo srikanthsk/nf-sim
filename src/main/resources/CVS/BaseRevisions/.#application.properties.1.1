@@ -1,0 +1,36 @@
+writeToFile=true
+
+waitTimeInSec=1
+
+noOfMsgsPerBurst=5
+noOfAccessMsgsPerBurst=55
+noOfSetaMsgsPerBurst=1
+noOfErrorMsgsPerBurst=1
+noOfGcMsgsPerBurst=1
+noOfInfoMsgsPerBurst=5
+
+logTypesSupported=ACCESSLOG, SETALOG, INFOLOG
+#logTypesSupported=ACCESSLOG
+
+#10.202.1.252 10.202.4.168:7003 - 2016-11-25 23:59:58 0.017 GET /myaccount/json/myinfo/customer_info_details_json.jsp -  200 132 "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36"  "71.85.179.19, 23.43.164.46"    -       "[corRID::m21584f9843e1-26ed-40ce-943c-223c43f8a2a1][SID::3ECfNwef9tz1V18SxMO-EdtsqtARDbfGpV6YsWfSOsib2C0T4al5!-1902206761!957554599!1480139933599][PID::2254023574946854][UID::kennitarmoore][OID::7021732168][dcroute::pkyb][VisitorId::2254023574946854][kohls_klbc_cookie::2818886154.23323.0000][kohls_klbd_cookie::204223148.20480.0000][DCRouteS::pkyb-1480139997]"
+
+accessLogFormat=$clientip$ $destip$:$destport$ $username$ $date$ $time$ $resptime$ $httpmethod$ $uripathparam$ $uriparam$ $httpstatuscode$ $sizeinbytes$ $useragent$ $xForwardedFor$ $TOPO$ $FP$ $greedydata$
+accessLogLocation=/tmp/nf-access.log
+
+#Feb 14 03:42:34 h121618vaps2241.att.kohls.com CEF:0|Oracle|ATG|11.1|custLoginSuccess|Customer Login Succes|3|src=10.202.193.253 user=2254005365123311
+setaLogFormat=$month$ $day$ $year$ $time$ $hostname$.abc.com CEF:$cefno$|$app$|$serverType$|$version$|$actionPerformed$|$status$|$timetaken$|$greedydata$
+setaLogLocation=/tmp/nf-seta.log
+
+#Feb 14 03:42:34 h121618vaps2241.att.kohls.com CEF:0|Oracle|ATG|11.1|custLoginSuccess|Customer Login Succes|3|src=10.202.193.253 user=2254005365123311
+errorLogFormat=$month$ $day$ $year$ $time$ $hostname$.abc.com CEF:$cefno$|$app$|$serverType$|$version$|$actionPerformed$|$status$|$timetaken$|$greedydata$
+errorLogLocation=/tmp/nf-error.log
+
+#Feb 14 03:42:34 h121618vaps2241.att.kohls.com CEF:0|Oracle|ATG|11.1|custLoginSuccess|Customer Login Succes|3|src=10.202.193.253 user=2254005365123311
+gcLogFormat=$month$ $day$ $year$ $time$ $hostname$.abc.com CEF:$cefno$|$app$|$serverType$|$version$|$actionPerformed$|$status$|$timetaken$|$greedydata$
+gcLogLocation=/tmp/nf-gc.log
+
+#**** info[[Path::/rest/model//atg/userprofiling/ProfileActor/login][corRID::NAID-andr-c577acf3d844be95fe89371d8c5c1146-1478816495340][KEY::web]
+#[SID::yqqfOEAudpYGUpFO1DH8TNwDgvU0mIvcpsDJvOL0WqtBiL6FeOqJ!-2044427349!1480140013614][PID::NULL][UID::bagne01]
+#[OID::NULL][Bopus::NULL]]  Sat Nov 26 00:00:13.647 CST 2016        1480140013647   /atg/dynamo/servlet/dafpipeline/ActorServlet    Time Consumed - 22 ms
+infoLogFormat=**** info[[Path::$action$][corRID::$corRID$][KEY::$key$][SID::$sid$][PID::$pid$][UID::$uid$][OID::$oid$][Bopus::$bopus$]] $datetime$ $timestamp$ $uripath$ $greedydata$
+infoLogLocation=/tmp/nf-info.log
